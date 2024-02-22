@@ -12,6 +12,6 @@ namespace LiverChat.Models
         {
 
         }
-        public DbSet<liver> Indents { get; set; }
+        public DbSet<liver> liver { get; set; }
     }
 }

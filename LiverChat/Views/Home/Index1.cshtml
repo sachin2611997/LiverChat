@@ -1,0 +1,24 @@
+﻿@model IEnumerable<LiverChat.Models.liver>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index1</title>
+</head>
+<body>
+    @{
+        var chart = new Chart(width: 500, height: 500, theme: ChartTheme.Yellow)
+       .AddTitle("USA City Distribution")
+       .AddSeries("Default", chartType: "Bar",
+            xValue: Model, xField: "N_CLINEXT"
+            )
+        .Write();
+    }
+</body>
+</html>
