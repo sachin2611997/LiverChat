@@ -26,10 +26,12 @@ namespace LiverChat.Controllers
           // ViewBag.objectname = db.liver.GroupBy(x => x.N_CLINEXT).Select(y =>y.Count()).ToList();
 
             ViewBag.data = db.liver.GroupBy(x => x.N_CLINEXT).Select(y => new  { y.Key, Count = Math.Round(y.Count() * 100.0 / db.liver.Select(x => x.N_CLINEXT).Count(),1)}).ToList();
-            var list = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count() });
-            //    ViewBag.objectname = db.liver.GroupBy(x => x.TMH_RX).Select(y => new { y.Key, Count = Math.Round(y.Count() * 100.0 / db.liver.Select(x => x.TMH_RX).Count(), 1) }).ToList();
-               ViewBag.objectname = db.liver.GroupBy(x => x.TMH_RX).Select(y => new { y.Key, Count = y.Count() }).ToList();
-
+            var list = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count(), Percentage=Math.Round(x.Count() * 100.0 / db.liver.Select(y => y.STATE).Count(),1)}).ToList();
+          //  ViewBag.objectname = db.liver.GroupBy(x => x.TMH_RX).Select(y => new { y.Key, Count = Math.Round(y.Count() * 100.0 ,1) }).ToList();
+          var obj = db.liver.GroupBy(x => x.TMH_RX).Select(y => new { y.Key, Count = y.Count() }).ToList();
+            ViewBag.objectname= obj.Where(x=>x.Key!=null);
+            ViewBag.TotalCount = db.liver.Select(x => x.STATE).Count();
+            ViewBag.per = Math.Round(list.Sum(x => x.Percentage));
             return View(list);
         }
 
@@ -59,6 +61,21 @@ namespace LiverChat.Controllers
             ViewBag.data = db.liver.GroupBy(x => x.N_CLINEXT).Select(y => y.Count()).ToList();
             ViewBag.objectname = db.liver.GroupBy(x => x.N_CLINEXT).Select(y =>  y.Key ).ToList();
             return View();
+        }
+
+        public ActionResult BarChart()
+        {
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            dataPoints.Add(new DataPoint("Economics", 1));
+            dataPoints.Add(new DataPoint("Physics", 2));
+            dataPoints.Add(new DataPoint("Literature", 4));
+            dataPoints.Add(new DataPoint("Chemistry", 4));
+            dataPoints.Add(new DataPoint("Literature", 9));
+            dataPoints.Add(new DataPoint("Physiology or Medicine", 11));
+            dataPoints.Add(new DataPoint("Peace", 13));
+
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return View(dataPoints);
         }
     }
 }

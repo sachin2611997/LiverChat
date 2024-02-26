@@ -23,6 +23,6 @@ namespace LiverChat.Models
     {
         public int Statecount { get; set; }
         public string State { get; set; }
-        public int Percentage { get; set; }
+        public double Percentage { get; set; }
     }
 }

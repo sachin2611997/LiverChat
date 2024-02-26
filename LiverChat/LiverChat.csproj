@@ -4428,6 +4428,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChartsConcrete.cs" />
+    <Compile Include="Models\DataPoint.cs" />
     <Compile Include="Models\DbEntity.cs" />
     <Compile Include="Models\ICharts.cs" />
     <Compile Include="Models\liver.cs" />
@@ -4776,6 +4777,7 @@
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\list.cshtml" />
+    <Content Include="Views\Home\BarChart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
