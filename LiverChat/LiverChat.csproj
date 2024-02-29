@@ -17,7 +17,7 @@
     <RootNamespace>LiverChat</RootNamespace>
     <AssemblyName>LiverChat</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -4778,6 +4778,7 @@
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\list.cshtml" />
     <Content Include="Views\Home\BarChart.cshtml" />
+    <None Include="Properties\PublishProfiles\LiverChat.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4803,7 +4804,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53048</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53048/</IISUrl>
+          <IISUrl>http://localhost/LiverChat</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

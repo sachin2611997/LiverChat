@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
-<head>
+<head> 
     <meta charset="utf-8" />
     <title>Metronic | Charts - Amchart</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
+        <div>
             <div class="page-content">
               
                 <div class="row">
@@ -86,7 +86,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="portlet-body">
                                         <div id="chart_5" class="chart" style="height: 400px;">
                                         </div>
-                                        @*<div class="well margin-top-20">
+                                        <div class="well margin-top-20">
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <label class="text-left">Top Radius:</label>
@@ -101,11 +101,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <input class="chart_5_chart_input" data-property="depth3D" type="range" min="1" max="120" value="40" step="1" />
                                                 </div>
                                             </div>
-                                        </div>*@
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- END CHART PORTLET-->
                             </div>
+                           
                         </div>
                         <!-- END ROW -->
                         <!-- BEGIN ROW -->
@@ -154,10 +155,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                         <div class="well margin-top-20">
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                @*<div class="col-sm-3">
                                                     <label class="text-left">Top Radius:</label>
                                                     <input class="chart_7_chart_input" data-property="topRadius" type="range" min="0" max="1.5" value="1" step="0.01" />
-                                                </div>
+                                                </div>*@
                                                 <div class="col-sm-3">
                                                     <label class="text-left">Angle:</label>
                                                     <input class="chart_7_chart_input" data-property="angle" type="range" min="0" max="89" value="30" step="1" />
@@ -245,6 +246,8 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <!-- END CONTENT -->
     </div>
+
+  
    
     <script src="~/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="~/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -295,22 +298,34 @@ Demo.init(); // init demo features
                 "theme": "light",
                 "type": "serial",
                 "startDuration": 2,
-
+               
                 "fontFamily": 'Open Sans',
 
                 "color":    '#888',
-
+               
                 "dataProvider": @Html.Raw(Json.Encode(@ViewBag.data)),
                 //"color":["#FF0F00","#FF6600","#FF9E01","#FCD202","#F8FF01","#B0DE09"],
                 "valueAxes": [{
-                   "position": "left",
+                    "position": "left",
                     "axisAlpha": 0,
                     "gridAlpha": 0,
                     "dataPoints": "Count",
-                  
-                }],
-                "graphs": [{
                    
+                    
+                    
+                }],
+   
+     
+             
+                "graphs": [{
+                    //"balloonColor":"#FF0F00",
+                    "fillColors":"#FF6600",
+                    //"bold": true,
+                    "fontSize" :"14px" ,
+                    "labelText":"[[Count]]",
+                    "labelColorField": "#FF0F00",
+                    "color": "#000000",
+                    //"labelPosition":"inside",
                     "balloonText": "[[category]]: <b>[[value]]</b>",
                     "colorField": "color",
                     "fillAlphas": 0.85,
@@ -318,7 +333,9 @@ Demo.init(); // init demo features
                     "type": "column",
                     "topRadius": 1,
                     "valueField": "Count"
-                }],
+                }
+            
+                ],
                
 
                 "depth3D": 40,
@@ -371,7 +388,7 @@ Demo.init(); // init demo features
                 "theme": "light",
 
                 "fontFamily": 'Open Sans',
-            
+                "fontSize" :"14px" ,
                 "color":    '#888',
 
                 "dataProvider": @Html.Raw(Json.Encode(@ViewBag.objectname)),
@@ -433,6 +450,3 @@ Demo.init(); // init demo features
 </script>
 
 
-<script>
-   
-</script>
