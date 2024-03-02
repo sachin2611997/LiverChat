@@ -221,13 +221,19 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                             <tfoot >
                                                 <tr>
+                                                    <td>Other States</td>
+                                                    <td>@ViewBag.other</td>
+                                                    <td>@ViewBag.Otherper %</td>
+                                                </tr>
+                                                <tr>
+                                                    
                                                     <td>
                                                         <b>  Total</b>
                                                     </td>
                                                     <td>
                                                         <b>   @ViewBag.TotalCount</b>
                                                     </td>
-                                                    <td><b> @ViewBag.per %</b></td>
+                                                    <td><b> @ViewBag.totalper %</b></td>
                                                 </tr>
                                               
                                             </tfoot>
@@ -297,7 +303,7 @@ Demo.init(); // init demo features
             var chart = AmCharts.makeChart("chart_5", {
                 "theme": "light",
                 "type": "serial",
-                "startDuration": 2,
+                "startDuration": 1.5,
                
                 "fontFamily": 'Open Sans',
 

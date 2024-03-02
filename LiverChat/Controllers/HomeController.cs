@@ -26,15 +26,23 @@ namespace LiverChat.Controllers
           // ViewBag.objectname = db.liver.GroupBy(x => x.N_CLINEXT).Select(y =>y.Count()).ToList();
 
             ViewBag.data = db.liver.GroupBy(x => x.N_CLINEXT).Select(y => new  { y.Key, Count = Math.Round(y.Count() * 100.0 / db.liver.Select(x => x.N_CLINEXT).Count(),1)}).ToList();
-            var list = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count(), Percentage=Math.Round(x.Count() * 100.0 / db.liver.Select(y => y.STATE).Count(),1)}).ToList();
+            var list = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count(), Percentage=Math.Round(x.Count() * 100.0 / db.liver.Select(y => y.STATE).Count(),1)}).ToList().OrderByDescending(r=>r.Percentage).Take(5);
           //  ViewBag.objectname = db.liver.GroupBy(x => x.TMH_RX).Select(y => new { y.Key, Count = Math.Round(y.Count() * 100.0 ,1) }).ToList();
           var obj = db.liver.GroupBy(x => x.TMH_RX).Select(y => new { y.Key, Count = y.Count() }).ToList();
             ViewBag.objectname= obj.Where(x=>x.Key!=null);
             ViewBag.TotalCount = db.liver.Select(x => x.STATE).Count();
-            ViewBag.per = Math.Round(list.Sum(x => x.Percentage));
+
+            //    ViewBag.other = db.liver.GroupBy(x => x.STATE).OrderByDescending(x=> new LiverModel() { Statecount = x.Count() }).Skip(count:5).Count();
+            //    ViewBag.other =
+            var list1 = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count(), Percentage = Math.Round(x.Count() * 100.0 / db.liver.Select(y => y.STATE).Count(), 1) }).ToList().OrderByDescending(r => r.Percentage).Skip(5);
+
+            ViewBag.other =list1.Sum(y => y.Statecount);
+            ViewBag.Otherper= list1.Sum(x => x.Statecount)*100 / db.liver.Select(x => x.STATE).Count();
+             ViewBag.totalper = db.liver.Select(x => x.STATE).Count() * 100 / db.liver.Select(x => x.STATE).Count();
+            
             return View(list);
         }
-
+    
         public ActionResult list()
         {
             var list = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count() });
@@ -43,25 +51,7 @@ namespace LiverChat.Controllers
         
 
 
-        [HttpPost]
-        [ActionName("Index")]
-        public JsonResult Index1()
-        {
-          //  var list = db.liver.GroupBy(x => x.N_CLINEXT).Select(y=>new {y.Key, Count=y.Count()}).ToList();
-            // ViewBag.lists = JsonConvert.SerializeObject(list);
-           
-           
-            DbEntity db = new DbEntity();
-            return Json(db.liver.GroupBy(x => x.N_CLINEXT).Select(y => new { y.Key, Count = y.Count() }).ToList(), JsonRequestBehavior.AllowGet);
-            
-        }
-        [HttpGet]
-        public ActionResult Index2()
-        {
-            ViewBag.data = db.liver.GroupBy(x => x.N_CLINEXT).Select(y => y.Count()).ToList();
-            ViewBag.objectname = db.liver.GroupBy(x => x.N_CLINEXT).Select(y =>  y.Key ).ToList();
-            return View();
-        }
+      
 
         public ActionResult BarChart()
         {

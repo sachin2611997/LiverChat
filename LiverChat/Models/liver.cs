@@ -21,8 +21,9 @@ namespace LiverChat.Models
 
     public class LiverModel
     {
-        public int Statecount { get; set; }
+        public double Statecount { get; set; }
         public string State { get; set; }
         public double Percentage { get; set; }
+        public int othercount { get; set; }
     }
 }
