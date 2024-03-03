@@ -689,66 +689,66 @@ var ChartsAmcharts = function() {
         });
     }
 
-    var initChartSample7 = function() {
-        var chart = AmCharts.makeChart("chart_7", {
-            "type": "pie",
-            "theme": "light",
+    //var initChartSample7 = function() {
+    //    var chart = AmCharts.makeChart("chart_7", {
+    //        "type": "pie",
+    //        "theme": "light",
 
-            "fontFamily": 'Open Sans',
+    //        "fontFamily": 'Open Sans',
             
-            "color":    '#888',
+    //        "color":    '#888',
 
-            "dataProvider": [{
-                "country": "Lithuania",
-                "value": 260
-            }, {
-                "country": "Ireland",
-                "value": 201
-            }, {
-                "country": "Germany",
-                "value": 65
-            }, {
-                "country": "Australia",
-                "value": 39
-            }, {
-                "country": "UK",
-                "value": 19
-            }, {
-                "country": "Latvia",
-                "value": 10
-            }],
-            "valueField": "value",
-            "titleField": "country",
-            "outlineAlpha": 0.4,
-            "depth3D": 15,
-            "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-            "angle": 30,
-            "exportConfig": {
-                menuItems: [{
-                    icon: '/lib/3/images/export.png',
-                    format: 'png'
-                }]
-            }
-        });
+    //        "dataProvider": [{
+    //            "country": "Lithuania",
+    //            "value": 260
+    //        }, {
+    //            "country": "Ireland",
+    //            "value": 201
+    //        }, {
+    //            "country": "Germany",
+    //            "value": 65
+    //        }, {
+    //            "country": "Australia",
+    //            "value": 39
+    //        }, {
+    //            "country": "UK",
+    //            "value": 19
+    //        }, {
+    //            "country": "Latvia",
+    //            "value": 10
+    //        }],
+    //        "valueField": "value",
+    //        "titleField": "country",
+    //        "outlineAlpha": 0.4,
+    //        "depth3D": 15,
+    //        "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+    //        "angle": 30,
+    //        "exportConfig": {
+    //            menuItems: [{
+    //                icon: '/lib/3/images/export.png',
+    //                format: 'png'
+    //            }]
+    //        }
+    //    });
 
-        jQuery('.chart_7_chart_input').off().on('input change', function() {
-            var property = jQuery(this).data('property');
-            var target = chart;
-            var value = Number(this.value);
-            chart.startDuration = 0;
+    //    jQuery('.chart_7_chart_input').off().on('input change', function() {
+    //        var property = jQuery(this).data('property');
+    //        var target = chart;
+    //        var value = Number(this.value);
+    //        chart.startDuration = 0;
 
-            if (property == 'innerRadius') {
-                value += "%";
-            }
+    //        if (property == 'innerRadius') {
+    //            value += "%";
+    //        }
 
-            target[property] = value;
-            chart.validateNow();
-        });
+    //        target[property] = value;
+    //        chart.validateNow();
+    //    });
 
-        $('#chart_7').closest('.portlet').find('.fullscreen').click(function() {
-            chart.invalidateSize();
-        });
-    }
+    //    $('#chart_7').closest('.portlet').find('.fullscreen').click(function() {
+    //        chart.invalidateSize();
+    //    });
+    //}
 
     var initChartSample8 = function() {
         var chart = AmCharts.makeChart("chart_8", {
@@ -3234,9 +3234,9 @@ var ChartsAmcharts = function() {
             initChartSample2();
             initChartSample3();
             initChartSample4();
-          //  initChartSample5();
+           // initChartSample5();
             initChartSample6();
-            initChartSample7();
+            //initChartSample7();
             initChartSample8();
             initChartSample9();
             initChartSample10();
