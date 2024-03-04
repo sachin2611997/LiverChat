@@ -4773,9 +4773,6 @@
     <Content Include="assets\global\plugins\typeahead\README.md" />
     <Content Include="assets\global\plugins\uniform\css\uniform.default.scss" />
     <Content Include="assets\global\plugins\uniform\README.md" />
-    <Content Include="Views\Home\DashBoardCount.cshtml" />
-    <Content Include="Views\Home\Index1.cshtml" />
-    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\list.cshtml" />
     <Content Include="Views\Home\BarChart.cshtml" />
     <None Include="Properties\PublishProfiles\LiverChat.pubxml" />

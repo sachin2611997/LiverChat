@@ -20,7 +20,7 @@ namespace LiverChat.Controllers
         public ActionResult Index()
         {
             //var list= db.liver.GroupBy(x => x.N_CLINEXT).ToList();
-            // ViewBag.lists = JsonConvert.SerializeObject(list);
+           
          //  ViewBag.data = db.liver.GroupBy(x => x.N_CLINEXT).Select(y=> new { y.Key, Count = y.Count() }).ToList();
 
           // ViewBag.objectname = db.liver.GroupBy(x => x.N_CLINEXT).Select(y =>y.Count()).ToList();
@@ -33,7 +33,7 @@ namespace LiverChat.Controllers
             ViewBag.TotalCount = db.liver.Select(x => x.STATE).Count();
 
             //    ViewBag.other = db.liver.GroupBy(x => x.STATE).OrderByDescending(x=> new LiverModel() { Statecount = x.Count() }).Skip(count:5).Count();
-            //    ViewBag.other =
+        
             var list1 = db.liver.GroupBy(x => x.STATE).Select(x => new LiverModel() { State = x.Key, Statecount = x.Count(), Percentage = Math.Round(x.Count() * 100.0 / db.liver.Select(y => y.STATE).Count(), 1) }).ToList().OrderByDescending(r => r.Percentage).Skip(5);
 
             ViewBag.other =list1.Sum(y => y.Statecount);
